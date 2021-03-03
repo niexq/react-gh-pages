@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+## 将React APP部署到GitHub Pages.md
+参考[react-gh-pages](https://github.com/gitname/react-gh-pages)以及[create-react-app-Deployment-GitHub Pages](https://create-react-app.dev/docs/deployment/#github-pages)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![react-gh-pages](/logo.png)
+<!-- # <img src="/logo.png" title="react-gh-pages" alt="react-gh-pages logo" width="530"> -->
 
-## Available Scripts
+## 步骤
+前提：本地已安装nodejs，已有github账户
 
-In the project directory, you can run:
+- [1.在GitHub上创建一个空的repository](#step1)
+- [2.使用create-react-app创建新的React应用](#step2)
+- [3.重要，添加homepage到package.json](#step3)
+- [4.重要，安装gh-pages并添加deploy到package.json的scripts中](#step4)
+- [5.重要，将GitHub存储库添加为本地git存储库中的remote](#step5)
+- [6.重要，通过运行```npm run deploy```部署到GitHub Pages](#step6)
+- [7.可选，配置域](#step7)
+- [8.可选，将本地源代码提交推送到GitHub的```master```分支](#step8)
+- [9.可选，故障排除](#step9)
 
-### `yarn start`
+### <span id="step1">1.在GitHub上[创建一个空的repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)</span>
+  + 输入自定义的Repository name
+  + 其他为空，不用初始化README.md，.gitignore，license，保持repository干净无文件
+### <span id="step2">2.使用[create-react-app创建新的React应用](https://github.com/facebook/create-react-app)</span>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```js
+// npx
+npx create-react-app react-gh-pages
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+// or npm
+npm init react-app react-gh-pages
 
-### `yarn test`
+// or yarn
+yarn create react-app react-gh-pages
+```
+### <span id="step3">3.**重要**，添加homepage到package.json</span>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+打开项目，然后为项目package.json添加一个homepage字段：
+```js
 
-### `yarn build`
+"homepage": "https://myusername.github.io/react-gh-pages",
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+// 或GitHub用户页面
+"homepage": "https://myusername.github.io",
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+// 或自定义域页面：
+"homepage": "https://mywebsite.com",
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+Create React App使用该homepage字段来确定所构建的HTML文件中的根URL。
 
-### `yarn eject`
+### <span id="step4">4.**重要**，安装gh-pages并添加deploy到package.json的scripts中</span>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+进入项目，安装gh-pages
+```js
+cd react-gh-pages
+npm install gh-pages --save-dev
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+添加以下deploy脚本到项目的package.json中：
+```js
+  "scripts": {
++   "predeploy": "npm run build",
++   "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+该predeploy脚本将自动运行在deploy运行之前。
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+（可忽略）如果要部署到GitHub用户页面而不是项目页面，则需要进行其他修改：
 
-## Learn More
+调整package.json脚本以将部署推送到master：
+```js
+  "scripts": {
+    "predeploy": "npm run build",
+-   "deploy": "gh-pages -d build",
++   "deploy": "gh-pages -b master -d build",
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### <span id="step5">5.**重要**，将GitHub存储库添加为本地git存储库中的remote</span>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```js
+git remote add origin https://github.com/myusername/react-gh-pages.git
+```
 
-### Code Splitting
+### <span id="step6">6.**重要**，通过运行```npm run deploy```部署到GitHub Pages</span>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```js
+npm run deploy
+```
 
-### Analyzing the Bundle Size
+### <span id="step7">7.**可选**，配置域</span>
+可以通过新增```CNAME```文件到```public/```目录来使用GitHub Pages配置自定义域。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+CNAME文件应如下所示：
+```js
+mywebsite.com
+```
 
-### Making a Progressive Web App
+### <span id="step8">8.**可选**，将本地源代码提交推送到GitHub的```master```分支</span>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```js
+git add .
+git commit -m "feat: Create a React app and publish it to GitHub Pages"
+git push origin master
+```
 
-### Advanced Configuration
+### <span id="step9">9.**可选**，故障排除</span>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
++ 如果在部署时遇到```/dev/tty: No such a device or address```错误或类似错误，请尝试以下操作：
+  + 创建一个新的[个人访问令牌](https://github.com/settings/tokens)
+  + ```git remote set-url origin https://<user>:<token>@github.com/<user>/<repo>```
+  + 再运行```npm run deploy```
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
++ 如果在部署时获得```Cannot read property 'email' of null```，请尝试以下操作：
+  + ```git config --global user.name '<your_name>'```
+  + ```git config --global user.email '<your_email>'```
+  + 再运行```npm run deploy```

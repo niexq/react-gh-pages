@@ -1,7 +1,15 @@
 {
   "name": "react-gh-pages",
   "version": "0.1.0",
+  "description": "使用create-react-app创建的react应用部署到GitHub Pages",
+  "homepage": "http://niexq.github.io/react-gh-pages",
   "private": true,
+  "author": "niexq",
+  "keywords": [
+    "create-react-app",
+    "gh-pages",
+    "GitHub Pages"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -15,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }
