@@ -1,4 +1,4 @@
-## 将React APP部署到GitHub Pages.md
+## 将React APP部署到GitHub Pages
 参考[react-gh-pages](https://github.com/gitname/react-gh-pages)以及[create-react-app-Deployment-GitHub Pages](https://create-react-app.dev/docs/deployment/#github-pages)
 
 ![react-gh-pages](/logo.png)
@@ -116,3 +116,9 @@ git push origin master
   + ```git config --global user.name '<your_name>'```
   + ```git config --global user.email '<your_email>'```
   + 再运行```npm run deploy```
+
+  ### 最后
+
+  如果操作了第7步配置了自定义域名域名，可访问：https://mywebsite.com/react-gh-pages
+
+  如未配置域名，访问：https://myusername.github.io/react-gh-pages
