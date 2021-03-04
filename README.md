@@ -120,17 +120,18 @@ git push origin master
   + ```git remote set-url origin https://<user>:<token>@github.com/<user>/<repo>```
   + 再运行```npm run deploy```
 
-+ 如果在部署时获得```Cannot read property 'email' of null```，请尝试以下操作：
++ 如果在部署时遇到```Cannot read property 'email' of null```，请尝试以下操作：
   + ```git config --global user.name '<your_name>'```
   + ```git config --global user.email '<your_email>'```
   + 再运行```npm run deploy```
 
-+ 如果在部署时获得```fatal: A branch named 'gh-pages' already exists.```，请尝试以下操作：
-
-```js
-// 命令行或手动删除
-rm -rf node_modules/.cache/gh-pages
-```
++ 如果在部署时遇到```fatal: A branch named 'gh-pages' already exists.```，请尝试以下操作：
+  + 命令行或手动删除node_modules/.cache/gh-pages
+  + 再运行**npm run deploy**
+  ```js
+  rm -rf node_modules/.cache/gh-pages
+  npm run deploy
+  ```
 
 ### <span>最后</span>
 
