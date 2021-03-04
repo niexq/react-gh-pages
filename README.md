@@ -13,9 +13,10 @@
 - [4.重要，安装gh-pages并添加deploy到package.json的scripts中](#step4)
 - [5.重要，将GitHub存储库添加为本地git存储库中的remote](#step5)
 - [6.重要，通过运行```npm run deploy```部署到GitHub Pages](#step6)
-- [7.可选，配置域](#step7)
-- [8.可选，将本地源代码提交推送到GitHub的```master```分支](#step8)
-- [9.可选，故障排除](#step9)
+- [7.对于项目页面，请确保项目设置使用```gh-pages```](#step7)
+- [8.可选，配置域](#step8)
+- [9.可选，将本地源代码提交推送到GitHub的```master```分支](#step9)
+- [10.可选，故障排除](#step10)
 
 ### <span id="step1">1.在GitHub上[创建一个空的repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)</span>
   + 输入自定义的Repository name
@@ -89,7 +90,13 @@ git remote add origin https://github.com/myusername/react-gh-pages.git
 npm run deploy
 ```
 
-### <span id="step7">7.**可选**，配置域</span>
+
+### <span id="step7">7.对于项目页面，请确保项目设置使用```gh-pages```</span>
+确保将GitHub项目设置中的```GitHub Pages```选项设置为使用```gh-pages```分支：
+
+![gh-pages-settings](/gh-pages-settings.gif)
+![gh-pages-settings](/gh-pages-settings.png)
+### <span id="step8">8.**可选**，[配置域](https://docs.github.com/en/github/working-with-github-pages/about-custom-domains-and-github-pages#supported-custom-domains)</span>
 可以通过新增```CNAME```文件到```public/```目录来使用GitHub Pages配置自定义域。
 
 CNAME文件应如下所示：
@@ -97,7 +104,7 @@ CNAME文件应如下所示：
 mywebsite.com
 ```
 
-### <span id="step8">8.**可选**，将本地源代码提交推送到GitHub的```master```分支</span>
+### <span id="step9">9.**可选**，将本地源代码提交推送到GitHub的```master```分支</span>
 
 ```js
 git add .
@@ -105,7 +112,7 @@ git commit -m "feat: Create a React app and publish it to GitHub Pages"
 git push origin master
 ```
 
-### <span id="step9">9.**可选**，故障排除</span>
+### <span id="step10">10.**可选**，故障排除</span>
 
 + 如果在部署时遇到```/dev/tty: No such a device or address```错误或类似错误，请尝试以下操作：
   + 创建一个新的[个人访问令牌](https://github.com/settings/tokens)
@@ -117,8 +124,12 @@ git push origin master
   + ```git config --global user.email '<your_email>'```
   + 再运行```npm run deploy```
 
-  ### 最后
+### <span>最后</span>
 
-  如果操作了第7步配置了自定义域名域名，可访问：https://mywebsite.com/react-gh-pages
+如果操作了第7步配置了自定义域名域名，可访问：https://mywebsite.com/react-gh-pages
 
-  如未配置域名，访问：https://myusername.github.io/react-gh-pages
+如未配置域名，访问：https://myusername.github.io/react-gh-pages
+
+也可通过GitHub-settings-GitHub Pages查看：
+
+![website](/website.png)
