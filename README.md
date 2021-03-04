@@ -1,7 +1,7 @@
 ## 将React APP部署到GitHub Pages
 参考[react-gh-pages](https://github.com/gitname/react-gh-pages)以及[create-react-app-Deployment-GitHub Pages](https://create-react-app.dev/docs/deployment/#github-pages)
 
-![react-gh-pages](/logo.png)
+![react-gh-pages](/react-gh-pages.png)
 <!-- # <img src="/logo.png" title="react-gh-pages" alt="react-gh-pages logo" width="530"> -->
 
 ## 步骤
