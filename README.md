@@ -1,4 +1,4 @@
-## 将React APP部署到GitHub Pages
+## 将React应用部署到GitHub Pages
 参考[react-gh-pages](https://github.com/gitname/react-gh-pages)以及[create-react-app-Deployment-GitHub Pages](https://create-react-app.dev/docs/deployment/#github-pages)
 
 ![react-gh-pages](/react-gh-pages.png)
@@ -21,6 +21,7 @@
 ### <span id="step1">1.在GitHub上[创建一个空的repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)</span>
   + 输入自定义的Repository name
   + 其他为空，不用初始化README.md，.gitignore，license，保持repository干净无文件
+
 ### <span id="step2">2.使用[create-react-app创建新的React应用](https://github.com/facebook/create-react-app)</span>
 
 ```js
