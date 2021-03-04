@@ -125,6 +125,13 @@ git push origin master
   + ```git config --global user.email '<your_email>'```
   + 再运行```npm run deploy```
 
++ 如果在部署时获得```fatal: A branch named 'gh-pages' already exists.```，请尝试以下操作：
+
+```js
+// 命令行或手动删除
+rm -rf node_modules/.cache/gh-pages
+```
+
 ### <span>最后</span>
 
 如果操作了第7步配置了自定义域名域名，可访问：https://mywebsite.com/react-gh-pages
